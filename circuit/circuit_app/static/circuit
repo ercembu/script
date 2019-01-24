@@ -1,0 +1,17 @@
+graph Circuit {
+	graph [rankdir=LR]
+	node [fontsize=10 label="" shape=none]
+	INP1 [label=INP1]
+	node [image="AND.png"]
+	AND1 [label=AND1]
+	node [image=none]
+	node [image="SWITCHON.png"]
+	SWITCH2 [label="SWITCH2 00"]
+	node [image=none]
+	node [image="LEDOFF.png"]
+	LED3 [label="LED3 0"]
+	node [image=none]
+	SWITCH2:e -- AND1:nw
+	AND1:e -- LED3:sw
+	INP1:e -- AND1:sw
+}

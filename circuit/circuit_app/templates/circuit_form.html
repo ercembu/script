@@ -1,0 +1,83 @@
+{% block content %}
+{% load static %}
+<style>
+    g{
+        float: right;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+<g><div id='canvas'></div></g>
+
+<form action="" method="POST" id="show">
+    {% csrf_token %}
+    <button type="submit" name = "show">Show</button>
+</form>
+
+<p> Add Component</p>
+<form action="" method="post" id="component">
+    {% csrf_token %}
+    {{ component_form.as_p }}
+<input type="submit" value="Add Component" />
+</form>
+
+<p> Set Switches</p>
+<form action="" method="post" id="switchSet">{%csrf_token%}
+    {{switch_form.as_p}}
+    <input type ="submit" value="Set Switch"/>
+</form>
+
+<p> Connect Components</p>
+<form action="" method="post" id="connect">{% csrf_token %}
+    {{ connect_form.as_p }}
+    <input type="submit" value="Connect" />
+</form>
+
+<p> Disconnect Components</p>
+<form action="" method="post" id="disconnect">{% csrf_token %}
+    {{ disConnect_form.as_p }}
+    <input type="submit" value="Disconnect" />
+</form>
+
+<p> Delete Component</p>
+<form action="" method="post" id="delComponent">{% csrf_token %}
+    {{ del_form.as_p }}
+    <input type="submit" value="Delete" />
+</form>
+
+<p> Set Input</p>
+<form action="" method="post" id="set">{% csrf_token %}
+    {{ setinput.as_p }}
+    <input type="submit" value="Set" />
+</form>
+
+<span class="conns" >
+<p> <div>Connections: </div>  <div id="conns">
+{% for conn in conns%}
+         <li> {{conn}} </li> 
+
+    
+{% endfor%}    
+ </div> </p>
+</div>
+
+
+<div class="output"   >
+<p> <div>  Calculated output: </div>  <div id="x">   {{ output }} </div> </p>
+</div>
+
+<form action="" method="POST" id="save">
+    {% csrf_token %}
+    <button type="submit" name = "save">Save</button>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<script src="{% static "js/main.js" %}"></script>
+
+
+
+{% endblock %}

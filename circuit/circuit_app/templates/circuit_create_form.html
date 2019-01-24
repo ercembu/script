@@ -1,0 +1,17 @@
+
+
+{% block content %}
+
+{% if circuit_list %}
+	{% for circuit in circuit_list %}
+		<a href="{{ circuit.get }}">  <td>   <a href="/web_app/circuit/{{ circuit.name }}">{{ circuit.name }}</a> </td>
+	{% endfor %}
+{% endif %}	
+<form name="CircuitForm" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Submit" />
+    
+</form>
+{% endblock %}
